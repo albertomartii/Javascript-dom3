@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <style>
+        .lista{
+            border: 35px solid black;
+            
+        }
+    </style>
+    <script>
+        var i = 1;
+        function anadir(){
+            
+            var elemento = document.createElement('li');
+            var nAnimal = document.createTextNode('Animal nuevo'+i);
+            elemento.appendChild(nAnimal);
+            document.getElementById('lista').appendChild(elemento);
+            i++;
+        }
+        function insertar(){
+
+            /*Creamos el <li></li>*/
+            var elemento = document.createElement('li');
+
+            /*Creamos el "Animal nuevo i"*/
+            var nAnimal = document.createTextNode('Animal nuevo'+i);
+            
+            /*Ponemos el texto dentro del <li></li> para que sea <li>Animal nuevo 1</li>*/
+            elemento.appendChild(nAnimal);
+
+            /*buscamos la lista y ponemos el <li> al principio de la lista*/
+            document.getElementById('lista').insertBefore(elemento, lista.firstChild);
+            i++;
+        }
+        function reemplazar(){
+            var lista = document.getElementById('lista');
+
+            var elementoCambiado = document.createElement('li');
+            var reemplazo = document.createTextNode('Loro');
+
+            elementoCambiado.appendChild(reemplazo);
+
+            lista.replaceChild(elementoCambiado, lista.firstElementChild);
+        }
+        function borrar(){
+            var padre = document.getElementById('lista');
+            var lista = padre.getElementsByTagName('li');
+            padre.removeChild(lista[0]);
+        }
+        function clonar(){
+            var padre = document.getElementById('lista');
+            
+            var clon = padre.cloneNode(true);
+            document.body.appendChild(clon);
+
+        }
+    </script>
+</head>
+<body>
+    <h1>ANIMALES</h1>
+    <div id="seccion">
+        <ul id="lista">
+            <li>leon</li>
+            <li>pantera</li>
+            <li>jirafa</li>
+        </ul>
+    </div>
+    <button onclick="anadir()">Añadir nuevo elemento</button>
+
+    <button onclick="insertar()">Insertar nuevo elemento</button>
+    
+    <button onclick="reemplazar()">Reemplazar elementos</button>
+    
+    <button onclick="borrar()">Borrar elemento</button>
+    
+    <button onclick="clonar()">Clonar la lista completa</button>
+    
+    <button onclick="cDOM()">Crear sublista dentro de leon con funciones DOM</button>
+    
+    <button onclick="cHTML()">Crear sublista dentro de leon con innerHTML</button>
+</body>
+</html>

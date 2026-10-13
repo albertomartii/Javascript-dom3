@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script>
+
+        function anadir_parrafo(){
+            var parrafo = document.createElement('p');
+            var texto = document.createTextNode('Párrafo añadido');
+
+            parrafo.appendChild(texto);
+
+            document.getElementById('ej-aCh').appendChild(parrafo);
+        }
+
+
+        function insertar_parrafo(){
+            var parrafo = document.createElement('p');
+            var texto = document.createTextNode('Párrafo insertado');
+
+            parrafo.appendChild(texto);
+
+            var padre = document.getElementById('ej-aCh');
+            var primerParrafo = padre.getElementsByTagName('p')[0];
+
+            padre.insertBefore(parrafo, primerParrafo.nextSibling);
+        }
+
+
+        function reemplazar_parrafo(){
+            var padre = document.getElementById('ej-aCh');
+            var parrafos = padre.getElementsByTagName('p');
+
+            parrafos[1].textContent = 'Párrafo reemplazado';
+        }
+
+
+        function borrar_parrafo(){
+            var padre = document.getElementById('ej-aCh');
+            var parrafos = padre.getElementsByTagName('p');
+
+            padre.removeChild(parrafos[1]);
+        }
+
+
+        function clonar_div(){
+            var padre = document.getElementById('ej-aCh');
+
+            var clon = padre.cloneNode(true);
+
+            document.body.appendChild(clon);
+        }
+
+    </script>
+</head>
+<body>
+    <div id="ej-aCh">
+        <p>Este es mi primer párrafo</p>
+        <button onclick="anadir_parrafo()">Añadir</button>
+        <button onclick="insertar_parrafo()">Insertar</button>
+        <button onclick="reemplazar_parrafo()">Reemplazar</button>
+        <button onclick="borrar_parrafo()">Borrar</button>
+        <button onclick="clonar_div()">Clonar div</button>
+    </div>
+</body>
+</html>
